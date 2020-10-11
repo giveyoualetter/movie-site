@@ -1,0 +1,1045 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.movie.dao.mapper.MovieInfoDOMapper">
+  <resultMap id="BaseResultMap" type="com.movie.model.MovieInfoDO">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="mtitle" jdbcType="CHAR" property="mtitle" />
+    <result column="mplace" jdbcType="CHAR" property="mplace" />
+    <result column="mtype" jdbcType="CHAR" property="mtype" />
+    <result column="mpublished" jdbcType="CHAR" property="mpublished" />
+    <result column="mdirector" jdbcType="CHAR" property="mdirector" />
+    <result column="mscore" jdbcType="DECIMAL" property="mscore" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.movie.model.MovieInfoDO">
+    <result column="mactor" jdbcType="LONGVARCHAR" property="mactor" />
+    <result column="murl" jdbcType="LONGVARCHAR" property="murl" />
+    <result column="mintro" jdbcType="LONGVARCHAR" property="mintro" />
+    <result column="mpicture" jdbcType="LONGVARCHAR" property="mpicture" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, mtitle, mplace, mtype, mpublished, mdirector, mscore
+  </sql>
+  <sql id="Blob_Column_List">
+    mactor, murl, mintro, mpicture
+  </sql>
+  <select id="selectByExampleWithBLOBs" parameterType="com.movie.model.MovieInfoDOExample" resultMap="ResultMapWithBLOBs">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from movie_info
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" parameterType="com.movie.model.MovieInfoDOExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from movie_info
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from movie_info
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from movie_info
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.movie.model.MovieInfoDOExample">
+    delete from movie_info
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.movie.model.MovieInfoDO">
+    insert into movie_info (id, mtitle, mplace, 
+      mtype, mpublished, mdirector, 
+      mscore, mactor, murl, 
+      mintro, mpicture)
+    values (#{id,jdbcType=INTEGER}, #{mtitle,jdbcType=CHAR}, #{mplace,jdbcType=CHAR}, 
+      #{mtype,jdbcType=CHAR}, #{mpublished,jdbcType=CHAR}, #{mdirector,jdbcType=CHAR}, 
+      #{mscore,jdbcType=DECIMAL}, #{mactor,jdbcType=LONGVARCHAR}, #{murl,jdbcType=LONGVARCHAR}, 
+      #{mintro,jdbcType=LONGVARCHAR}, #{mpicture,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.movie.model.MovieInfoDO">
+    insert into movie_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="mtitle != null">
+        mtitle,
+      </if>
+      <if test="mplace != null">
+        mplace,
+      </if>
+      <if test="mtype != null">
+        mtype,
+      </if>
+      <if test="mpublished != null">
+        mpublished,
+      </if>
+      <if test="mdirector != null">
+        mdirector,
+      </if>
+      <if test="mscore != null">
+        mscore,
+      </if>
+      <if test="mactor != null">
+        mactor,
+      </if>
+      <if test="murl != null">
+        murl,
+      </if>
+      <if test="mintro != null">
+        mintro,
+      </if>
+      <if test="mpicture != null">
+        mpicture,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="mtitle != null">
+        #{mtitle,jdbcType=CHAR},
+      </if>
+      <if test="mplace != null">
+        #{mplace,jdbcType=CHAR},
+      </if>
+      <if test="mtype != null">
+        #{mtype,jdbcType=CHAR},
+      </if>
+      <if test="mpublished != null">
+        #{mpublished,jdbcType=CHAR},
+      </if>
+      <if test="mdirector != null">
+        #{mdirector,jdbcType=CHAR},
+      </if>
+      <if test="mscore != null">
+        #{mscore,jdbcType=DECIMAL},
+      </if>
+      <if test="mactor != null">
+        #{mactor,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="murl != null">
+        #{murl,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="mintro != null">
+        #{mintro,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="mpicture != null">
+        #{mpicture,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.movie.model.MovieInfoDOExample" resultType="java.lang.Integer">
+    select count(*) from movie_info
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update movie_info
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.mtitle != null">
+        mtitle = #{record.mtitle,jdbcType=CHAR},
+      </if>
+      <if test="record.mplace != null">
+        mplace = #{record.mplace,jdbcType=CHAR},
+      </if>
+      <if test="record.mtype != null">
+        mtype = #{record.mtype,jdbcType=CHAR},
+      </if>
+      <if test="record.mpublished != null">
+        mpublished = #{record.mpublished,jdbcType=CHAR},
+      </if>
+      <if test="record.mdirector != null">
+        mdirector = #{record.mdirector,jdbcType=CHAR},
+      </if>
+      <if test="record.mscore != null">
+        mscore = #{record.mscore,jdbcType=DECIMAL},
+      </if>
+      <if test="record.mactor != null">
+        mactor = #{record.mactor,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.murl != null">
+        murl = #{record.murl,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.mintro != null">
+        mintro = #{record.mintro,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.mpicture != null">
+        mpicture = #{record.mpicture,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map">
+    update movie_info
+    set id = #{record.id,jdbcType=INTEGER},
+      mtitle = #{record.mtitle,jdbcType=CHAR},
+      mplace = #{record.mplace,jdbcType=CHAR},
+      mtype = #{record.mtype,jdbcType=CHAR},
+      mpublished = #{record.mpublished,jdbcType=CHAR},
+      mdirector = #{record.mdirector,jdbcType=CHAR},
+      mscore = #{record.mscore,jdbcType=DECIMAL},
+      mactor = #{record.mactor,jdbcType=LONGVARCHAR},
+      murl = #{record.murl,jdbcType=LONGVARCHAR},
+      mintro = #{record.mintro,jdbcType=LONGVARCHAR},
+      mpicture = #{record.mpicture,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update movie_info
+    set id = #{record.id,jdbcType=INTEGER},
+      mtitle = #{record.mtitle,jdbcType=CHAR},
+      mplace = #{record.mplace,jdbcType=CHAR},
+      mtype = #{record.mtype,jdbcType=CHAR},
+      mpublished = #{record.mpublished,jdbcType=CHAR},
+      mdirector = #{record.mdirector,jdbcType=CHAR},
+      mscore = #{record.mscore,jdbcType=DECIMAL}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.movie.model.MovieInfoDO">
+    update movie_info
+    <set>
+      <if test="mtitle != null">
+        mtitle = #{mtitle,jdbcType=CHAR},
+      </if>
+      <if test="mplace != null">
+        mplace = #{mplace,jdbcType=CHAR},
+      </if>
+      <if test="mtype != null">
+        mtype = #{mtype,jdbcType=CHAR},
+      </if>
+      <if test="mpublished != null">
+        mpublished = #{mpublished,jdbcType=CHAR},
+      </if>
+      <if test="mdirector != null">
+        mdirector = #{mdirector,jdbcType=CHAR},
+      </if>
+      <if test="mscore != null">
+        mscore = #{mscore,jdbcType=DECIMAL},
+      </if>
+      <if test="mactor != null">
+        mactor = #{mactor,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="murl != null">
+        murl = #{murl,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="mintro != null">
+        mintro = #{mintro,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="mpicture != null">
+        mpicture = #{mpicture,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.movie.model.MovieInfoDO">
+    update movie_info
+    set mtitle = #{mtitle,jdbcType=CHAR},
+      mplace = #{mplace,jdbcType=CHAR},
+      mtype = #{mtype,jdbcType=CHAR},
+      mpublished = #{mpublished,jdbcType=CHAR},
+      mdirector = #{mdirector,jdbcType=CHAR},
+      mscore = #{mscore,jdbcType=DECIMAL},
+      mactor = #{mactor,jdbcType=LONGVARCHAR},
+      murl = #{murl,jdbcType=LONGVARCHAR},
+      mintro = #{mintro,jdbcType=LONGVARCHAR},
+      mpicture = #{mpicture,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.movie.model.MovieInfoDO">
+    update movie_info
+    set mtitle = #{mtitle,jdbcType=CHAR},
+      mplace = #{mplace,jdbcType=CHAR},
+      mtype = #{mtype,jdbcType=CHAR},
+      mpublished = #{mpublished,jdbcType=CHAR},
+      mdirector = #{mdirector,jdbcType=CHAR},
+      mscore = #{mscore,jdbcType=DECIMAL}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.movie.model.MovieInfoDO">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="mtitle" jdbcType="CHAR" property="mtitle" />
+    <result column="mplace" jdbcType="CHAR" property="mplace" />
+    <result column="mtype" jdbcType="CHAR" property="mtype" />
+    <result column="mpublished" jdbcType="CHAR" property="mpublished" />
+    <result column="mdirector" jdbcType="CHAR" property="mdirector" />
+    <result column="mscore" jdbcType="DECIMAL" property="mscore" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.movie.model.MovieInfoDO">
+    <result column="mactor" jdbcType="LONGVARCHAR" property="mactor" />
+    <result column="murl" jdbcType="LONGVARCHAR" property="murl" />
+    <result column="mintro" jdbcType="LONGVARCHAR" property="mintro" />
+    <result column="mpicture" jdbcType="LONGVARCHAR" property="mpicture" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, mtitle, mplace, mtype, mpublished, mdirector, mscore
+  </sql>
+  <sql id="Blob_Column_List">
+    mactor, murl, mintro, mpicture
+  </sql>
+  <select id="selectByExampleWithBLOBs" parameterType="com.movie.model.MovieInfoDOExample" resultMap="ResultMapWithBLOBs">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from movie_info
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" parameterType="com.movie.model.MovieInfoDOExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from movie_info
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from movie_info
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from movie_info
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.movie.model.MovieInfoDOExample">
+    delete from movie_info
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.movie.model.MovieInfoDO">
+    insert into movie_info (id, mtitle, mplace, 
+      mtype, mpublished, mdirector, 
+      mscore, mactor, murl, 
+      mintro, mpicture)
+    values (#{id,jdbcType=INTEGER}, #{mtitle,jdbcType=CHAR}, #{mplace,jdbcType=CHAR}, 
+      #{mtype,jdbcType=CHAR}, #{mpublished,jdbcType=CHAR}, #{mdirector,jdbcType=CHAR}, 
+      #{mscore,jdbcType=DECIMAL}, #{mactor,jdbcType=LONGVARCHAR}, #{murl,jdbcType=LONGVARCHAR}, 
+      #{mintro,jdbcType=LONGVARCHAR}, #{mpicture,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.movie.model.MovieInfoDO">
+    insert into movie_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="mtitle != null">
+        mtitle,
+      </if>
+      <if test="mplace != null">
+        mplace,
+      </if>
+      <if test="mtype != null">
+        mtype,
+      </if>
+      <if test="mpublished != null">
+        mpublished,
+      </if>
+      <if test="mdirector != null">
+        mdirector,
+      </if>
+      <if test="mscore != null">
+        mscore,
+      </if>
+      <if test="mactor != null">
+        mactor,
+      </if>
+      <if test="murl != null">
+        murl,
+      </if>
+      <if test="mintro != null">
+        mintro,
+      </if>
+      <if test="mpicture != null">
+        mpicture,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="mtitle != null">
+        #{mtitle,jdbcType=CHAR},
+      </if>
+      <if test="mplace != null">
+        #{mplace,jdbcType=CHAR},
+      </if>
+      <if test="mtype != null">
+        #{mtype,jdbcType=CHAR},
+      </if>
+      <if test="mpublished != null">
+        #{mpublished,jdbcType=CHAR},
+      </if>
+      <if test="mdirector != null">
+        #{mdirector,jdbcType=CHAR},
+      </if>
+      <if test="mscore != null">
+        #{mscore,jdbcType=DECIMAL},
+      </if>
+      <if test="mactor != null">
+        #{mactor,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="murl != null">
+        #{murl,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="mintro != null">
+        #{mintro,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="mpicture != null">
+        #{mpicture,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.movie.model.MovieInfoDOExample" resultType="java.lang.Integer">
+    select count(*) from movie_info
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update movie_info
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.mtitle != null">
+        mtitle = #{record.mtitle,jdbcType=CHAR},
+      </if>
+      <if test="record.mplace != null">
+        mplace = #{record.mplace,jdbcType=CHAR},
+      </if>
+      <if test="record.mtype != null">
+        mtype = #{record.mtype,jdbcType=CHAR},
+      </if>
+      <if test="record.mpublished != null">
+        mpublished = #{record.mpublished,jdbcType=CHAR},
+      </if>
+      <if test="record.mdirector != null">
+        mdirector = #{record.mdirector,jdbcType=CHAR},
+      </if>
+      <if test="record.mscore != null">
+        mscore = #{record.mscore,jdbcType=DECIMAL},
+      </if>
+      <if test="record.mactor != null">
+        mactor = #{record.mactor,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.murl != null">
+        murl = #{record.murl,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.mintro != null">
+        mintro = #{record.mintro,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.mpicture != null">
+        mpicture = #{record.mpicture,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map">
+    update movie_info
+    set id = #{record.id,jdbcType=INTEGER},
+      mtitle = #{record.mtitle,jdbcType=CHAR},
+      mplace = #{record.mplace,jdbcType=CHAR},
+      mtype = #{record.mtype,jdbcType=CHAR},
+      mpublished = #{record.mpublished,jdbcType=CHAR},
+      mdirector = #{record.mdirector,jdbcType=CHAR},
+      mscore = #{record.mscore,jdbcType=DECIMAL},
+      mactor = #{record.mactor,jdbcType=LONGVARCHAR},
+      murl = #{record.murl,jdbcType=LONGVARCHAR},
+      mintro = #{record.mintro,jdbcType=LONGVARCHAR},
+      mpicture = #{record.mpicture,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update movie_info
+    set id = #{record.id,jdbcType=INTEGER},
+      mtitle = #{record.mtitle,jdbcType=CHAR},
+      mplace = #{record.mplace,jdbcType=CHAR},
+      mtype = #{record.mtype,jdbcType=CHAR},
+      mpublished = #{record.mpublished,jdbcType=CHAR},
+      mdirector = #{record.mdirector,jdbcType=CHAR},
+      mscore = #{record.mscore,jdbcType=DECIMAL}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.movie.model.MovieInfoDO">
+    update movie_info
+    <set>
+      <if test="mtitle != null">
+        mtitle = #{mtitle,jdbcType=CHAR},
+      </if>
+      <if test="mplace != null">
+        mplace = #{mplace,jdbcType=CHAR},
+      </if>
+      <if test="mtype != null">
+        mtype = #{mtype,jdbcType=CHAR},
+      </if>
+      <if test="mpublished != null">
+        mpublished = #{mpublished,jdbcType=CHAR},
+      </if>
+      <if test="mdirector != null">
+        mdirector = #{mdirector,jdbcType=CHAR},
+      </if>
+      <if test="mscore != null">
+        mscore = #{mscore,jdbcType=DECIMAL},
+      </if>
+      <if test="mactor != null">
+        mactor = #{mactor,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="murl != null">
+        murl = #{murl,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="mintro != null">
+        mintro = #{mintro,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="mpicture != null">
+        mpicture = #{mpicture,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.movie.model.MovieInfoDO">
+    update movie_info
+    set mtitle = #{mtitle,jdbcType=CHAR},
+      mplace = #{mplace,jdbcType=CHAR},
+      mtype = #{mtype,jdbcType=CHAR},
+      mpublished = #{mpublished,jdbcType=CHAR},
+      mdirector = #{mdirector,jdbcType=CHAR},
+      mscore = #{mscore,jdbcType=DECIMAL},
+      mactor = #{mactor,jdbcType=LONGVARCHAR},
+      murl = #{murl,jdbcType=LONGVARCHAR},
+      mintro = #{mintro,jdbcType=LONGVARCHAR},
+      mpicture = #{mpicture,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.movie.model.MovieInfoDO">
+    update movie_info
+    set mtitle = #{mtitle,jdbcType=CHAR},
+      mplace = #{mplace,jdbcType=CHAR},
+      mtype = #{mtype,jdbcType=CHAR},
+      mpublished = #{mpublished,jdbcType=CHAR},
+      mdirector = #{mdirector,jdbcType=CHAR},
+      mscore = #{mscore,jdbcType=DECIMAL}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.movie.model.MovieInfoDO">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="mtitle" jdbcType="CHAR" property="mtitle" />
+    <result column="mplace" jdbcType="CHAR" property="mplace" />
+    <result column="mtype" jdbcType="CHAR" property="mtype" />
+    <result column="mpublished" jdbcType="CHAR" property="mpublished" />
+    <result column="mdirector" jdbcType="CHAR" property="mdirector" />
+    <result column="mscore" jdbcType="DECIMAL" property="mscore" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.movie.model.MovieInfoDO">
+    <result column="mactor" jdbcType="LONGVARCHAR" property="mactor" />
+    <result column="murl" jdbcType="LONGVARCHAR" property="murl" />
+    <result column="mintro" jdbcType="LONGVARCHAR" property="mintro" />
+    <result column="mpicture" jdbcType="LONGVARCHAR" property="mpicture" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, mtitle, mplace, mtype, mpublished, mdirector, mscore
+  </sql>
+  <sql id="Blob_Column_List">
+    mactor, murl, mintro, mpicture
+  </sql>
+  <select id="selectByExampleWithBLOBs" parameterType="com.movie.model.MovieInfoDOExample" resultMap="ResultMapWithBLOBs">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from movie_info
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" parameterType="com.movie.model.MovieInfoDOExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from movie_info
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from movie_info
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from movie_info
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.movie.model.MovieInfoDOExample">
+    delete from movie_info
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.movie.model.MovieInfoDO">
+    insert into movie_info (id, mtitle, mplace, 
+      mtype, mpublished, mdirector, 
+      mscore, mactor, murl, 
+      mintro, mpicture)
+    values (#{id,jdbcType=INTEGER}, #{mtitle,jdbcType=CHAR}, #{mplace,jdbcType=CHAR}, 
+      #{mtype,jdbcType=CHAR}, #{mpublished,jdbcType=CHAR}, #{mdirector,jdbcType=CHAR}, 
+      #{mscore,jdbcType=DECIMAL}, #{mactor,jdbcType=LONGVARCHAR}, #{murl,jdbcType=LONGVARCHAR}, 
+      #{mintro,jdbcType=LONGVARCHAR}, #{mpicture,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.movie.model.MovieInfoDO">
+    insert into movie_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="mtitle != null">
+        mtitle,
+      </if>
+      <if test="mplace != null">
+        mplace,
+      </if>
+      <if test="mtype != null">
+        mtype,
+      </if>
+      <if test="mpublished != null">
+        mpublished,
+      </if>
+      <if test="mdirector != null">
+        mdirector,
+      </if>
+      <if test="mscore != null">
+        mscore,
+      </if>
+      <if test="mactor != null">
+        mactor,
+      </if>
+      <if test="murl != null">
+        murl,
+      </if>
+      <if test="mintro != null">
+        mintro,
+      </if>
+      <if test="mpicture != null">
+        mpicture,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="mtitle != null">
+        #{mtitle,jdbcType=CHAR},
+      </if>
+      <if test="mplace != null">
+        #{mplace,jdbcType=CHAR},
+      </if>
+      <if test="mtype != null">
+        #{mtype,jdbcType=CHAR},
+      </if>
+      <if test="mpublished != null">
+        #{mpublished,jdbcType=CHAR},
+      </if>
+      <if test="mdirector != null">
+        #{mdirector,jdbcType=CHAR},
+      </if>
+      <if test="mscore != null">
+        #{mscore,jdbcType=DECIMAL},
+      </if>
+      <if test="mactor != null">
+        #{mactor,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="murl != null">
+        #{murl,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="mintro != null">
+        #{mintro,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="mpicture != null">
+        #{mpicture,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.movie.model.MovieInfoDOExample" resultType="java.lang.Integer">
+    select count(*) from movie_info
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update movie_info
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.mtitle != null">
+        mtitle = #{record.mtitle,jdbcType=CHAR},
+      </if>
+      <if test="record.mplace != null">
+        mplace = #{record.mplace,jdbcType=CHAR},
+      </if>
+      <if test="record.mtype != null">
+        mtype = #{record.mtype,jdbcType=CHAR},
+      </if>
+      <if test="record.mpublished != null">
+        mpublished = #{record.mpublished,jdbcType=CHAR},
+      </if>
+      <if test="record.mdirector != null">
+        mdirector = #{record.mdirector,jdbcType=CHAR},
+      </if>
+      <if test="record.mscore != null">
+        mscore = #{record.mscore,jdbcType=DECIMAL},
+      </if>
+      <if test="record.mactor != null">
+        mactor = #{record.mactor,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.murl != null">
+        murl = #{record.murl,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.mintro != null">
+        mintro = #{record.mintro,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.mpicture != null">
+        mpicture = #{record.mpicture,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map">
+    update movie_info
+    set id = #{record.id,jdbcType=INTEGER},
+      mtitle = #{record.mtitle,jdbcType=CHAR},
+      mplace = #{record.mplace,jdbcType=CHAR},
+      mtype = #{record.mtype,jdbcType=CHAR},
+      mpublished = #{record.mpublished,jdbcType=CHAR},
+      mdirector = #{record.mdirector,jdbcType=CHAR},
+      mscore = #{record.mscore,jdbcType=DECIMAL},
+      mactor = #{record.mactor,jdbcType=LONGVARCHAR},
+      murl = #{record.murl,jdbcType=LONGVARCHAR},
+      mintro = #{record.mintro,jdbcType=LONGVARCHAR},
+      mpicture = #{record.mpicture,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update movie_info
+    set id = #{record.id,jdbcType=INTEGER},
+      mtitle = #{record.mtitle,jdbcType=CHAR},
+      mplace = #{record.mplace,jdbcType=CHAR},
+      mtype = #{record.mtype,jdbcType=CHAR},
+      mpublished = #{record.mpublished,jdbcType=CHAR},
+      mdirector = #{record.mdirector,jdbcType=CHAR},
+      mscore = #{record.mscore,jdbcType=DECIMAL}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.movie.model.MovieInfoDO">
+    update movie_info
+    <set>
+      <if test="mtitle != null">
+        mtitle = #{mtitle,jdbcType=CHAR},
+      </if>
+      <if test="mplace != null">
+        mplace = #{mplace,jdbcType=CHAR},
+      </if>
+      <if test="mtype != null">
+        mtype = #{mtype,jdbcType=CHAR},
+      </if>
+      <if test="mpublished != null">
+        mpublished = #{mpublished,jdbcType=CHAR},
+      </if>
+      <if test="mdirector != null">
+        mdirector = #{mdirector,jdbcType=CHAR},
+      </if>
+      <if test="mscore != null">
+        mscore = #{mscore,jdbcType=DECIMAL},
+      </if>
+      <if test="mactor != null">
+        mactor = #{mactor,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="murl != null">
+        murl = #{murl,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="mintro != null">
+        mintro = #{mintro,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="mpicture != null">
+        mpicture = #{mpicture,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.movie.model.MovieInfoDO">
+    update movie_info
+    set mtitle = #{mtitle,jdbcType=CHAR},
+      mplace = #{mplace,jdbcType=CHAR},
+      mtype = #{mtype,jdbcType=CHAR},
+      mpublished = #{mpublished,jdbcType=CHAR},
+      mdirector = #{mdirector,jdbcType=CHAR},
+      mscore = #{mscore,jdbcType=DECIMAL},
+      mactor = #{mactor,jdbcType=LONGVARCHAR},
+      murl = #{murl,jdbcType=LONGVARCHAR},
+      mintro = #{mintro,jdbcType=LONGVARCHAR},
+      mpicture = #{mpicture,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.movie.model.MovieInfoDO">
+    update movie_info
+    set mtitle = #{mtitle,jdbcType=CHAR},
+      mplace = #{mplace,jdbcType=CHAR},
+      mtype = #{mtype,jdbcType=CHAR},
+      mpublished = #{mpublished,jdbcType=CHAR},
+      mdirector = #{mdirector,jdbcType=CHAR},
+      mscore = #{mscore,jdbcType=DECIMAL}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

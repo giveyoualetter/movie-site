@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="9ad23026-4baf-40b2-8e5a-55e23c8870f6" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="package" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1ieBFUEFfh5W55BLbbmPvh8DVID" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_directory_selection" value="$PROJECT_DIR$/src/test/java/com/movie" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources" />
+    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="F:\Project\IDEAProj\movie-site\src\main\java\com\movie\mbg" />
+      <recent name="F:\Project\IDEAProj\movie-site\src\main\resources" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\Project\IDEAProj\movie-site\src\main\resources" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.MybatisGenerator">
+    <configuration name="MybatisGenerator (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="MybatisGenerator" />
+      <module name="movie-site" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MybatisGenerator" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.movie.mbg.MybatisGenerator" />
+      <module name="movie-site" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.movie.mbg.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="JsonTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="movie-site" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.utils.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.utils" />
+      <option name="MAIN_CLASS_NAME" value="com.utils.JsonTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test1 (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="movie-site" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.movie.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.movie" />
+      <option name="MAIN_CLASS_NAME" value="com.movie.Test1" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="Test1" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="movie-site [mybatis-generator:generate]" type="MavenRunConfiguration" factoryName="Maven" nameIsGenerated="true">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings" />
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list>
+                <option value="mybatis-generator:generate" />
+              </list>
+            </option>
+            <option name="pomFileName" />
+            <option name="profilesMap">
+              <map />
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="$PROJECT_DIR$" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="JUnit.JsonTest" />
+      <item itemvalue="JUnit.Test1" />
+      <item itemvalue="JUnit.Test1 (1)" />
+      <item itemvalue="Maven.movie-site [mybatis-generator:generate]" />
+      <item itemvalue="Application.MybatisGenerator" />
+      <item itemvalue="Application.MybatisGenerator (1)" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.MybatisGenerator" />
+        <item itemvalue="Application.MybatisGenerator (1)" />
+        <item itemvalue="JUnit.Test1 (1)" />
+        <item itemvalue="JUnit.JsonTest" />
+        <item itemvalue="JUnit.Test1" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="9ad23026-4baf-40b2-8e5a-55e23c8870f6" name="Default Changelist" comment="" />
+      <created>1602258073317</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1602258073317</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="275" y="21" key="#Project_Structure" timestamp="1602392923130">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="275" y="21" key="#Project_Structure/0.0.1366.728@0.0.1366.728" timestamp="1602392923130" />
+    <state x="521" y="13" key="#Test1" timestamp="1602395949773">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="521" y="13" key="#Test1/0.0.1366.728@0.0.1366.728" timestamp="1602395949773" />
+    <state x="521" y="26" key="#Test1_(1)" timestamp="1602395990933">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="521" y="26" key="#Test1_(1)/0.0.1366.728@0.0.1366.728" timestamp="1602395990933" />
+    <state x="137" y="18" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1602422810892">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="137" y="18" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728@0.0.1366.728" timestamp="1602422810892" />
+    <state x="631" y="70" key="#com.intellij.ide.util.MemberChooser" timestamp="1602423818766">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="631" y="70" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1602423818766" />
+    <state x="391" y="17" key="#toString()_Generation_Settings" timestamp="1602407175554">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="391" y="17" key="#toString()_Generation_Settings/0.0.1366.728@0.0.1366.728" timestamp="1602407175554" />
+    <state width="1322" height="204" key="GridCell.Tab.0.bottom" timestamp="1602425641999">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1322" height="204" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1602425641999" />
+    <state width="1322" height="204" key="GridCell.Tab.0.center" timestamp="1602425641999">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1322" height="204" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1602425641999" />
+    <state width="1322" height="204" key="GridCell.Tab.0.left" timestamp="1602425641998">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1322" height="204" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1602425641998" />
+    <state width="1322" height="204" key="GridCell.Tab.0.right" timestamp="1602425641999">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1322" height="204" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1602425641999" />
+    <state x="184" y="0" key="SettingsEditor" timestamp="1602421189425">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="184" y="0" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1602421189425" />
+    <state x="844" y="137" key="chooseDestDirectoryDialog" timestamp="1602396379107">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="844" y="137" key="chooseDestDirectoryDialog/0.0.1366.728@0.0.1366.728" timestamp="1602396379107" />
+    <state x="0" y="0" key="com.intellij.ide.util.TipDialog" timestamp="1602419936068">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="0" y="0" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1602419936068" />
+    <state x="646" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1602394938255">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="646" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1602394938255" />
+  </component>
+</project>
